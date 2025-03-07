@@ -9,13 +9,13 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file stats.c 
+ * @brief Analyzes and sorts an array of unsigned char data items
  *
- * <Add Extended Description Here>
+ * Reports analytics on max, min, mean, and median. Reorders the set from large to small.
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author Alan Arevalo
+ * @date 03-05-2025
  *
  */
 
@@ -36,8 +36,37 @@ void main() {
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
   /* Other Variable Declarations Go Here */
+  int max = find_maximum(test);
+  int min = find_minimum(test);
+  int mean = find_mean(test);
+  int median = find_median(test);
   /* Statistics and Printing Functions Go Here */
+}
+
+void print_statistics(int max, int min, int mean, int median) {
 
 }
 
-/* Add other Implementation File Code Here */
+void print_array(unsigned char *arr) {
+
+}
+
+int find_mean(unsigned char *arr) {
+	
+}
+
+int find_median(unsigned char *arr) {
+
+}
+
+int find_maximum(unsigned char *arr) {
+
+}
+
+int find_minimum(unsigned char *arr) {
+	
+}
+
+void sort_array(unsigned char arr) {
+
+}
