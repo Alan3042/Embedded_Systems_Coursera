@@ -79,7 +79,7 @@ int find_minimum(unsigned char *arr);
  *
  * @return Returns minimum of values in array.
  */
-void sort_array(unsigned char arr); 
+void sort_array(unsigned char *arr, int low, int high); 
 /**
  * @brief Array is sorted from largest to smallest
  *
@@ -88,5 +88,7 @@ void sort_array(unsigned char arr);
  * @param arr - Given array with values.
  */
 
+int partition(unsigned char *arr, int low, int high);
 
+void swap (unsigned char* a, unsigned char* b);
 #endif /* __STATS_H__ */

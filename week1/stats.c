@@ -40,33 +40,104 @@ void main() {
   int min = find_minimum(test);
   int mean = find_mean(test);
   int median = find_median(test);
+  sort_array(test, 0, (sizeof(test) / sizeof(test[0])) - 1);
   /* Statistics and Printing Functions Go Here */
+  print_statistics(max, min, mean, median);
+  print_array(test);
 }
 
 void print_statistics(int max, int min, int mean, int median) {
 
+	printf("Max: %d\n", max);
+	printf("Min: %d\n", min);
+	printf("Mean: %d\n", mean);
+	printf("Median: %d\n", median);
 }
 
 void print_array(unsigned char *arr) {
-
+	for (int i = 0; i < SIZE; i++)
+		printf("%d, ", arr[i]);
+	printf("\n");
 }
 
 int find_mean(unsigned char *arr) {
+	int mean;
+
+	for (int i = 0; i < SIZE; i++) {
+		mean += arr[i];
+	}
+
+	mean = mean / SIZE;
 	
+	return mean;
 }
 
 int find_median(unsigned char *arr) {
-
+	int median;
+	
+	if (SIZE%2 == 0)
+		median = (arr[SIZE/2] + arr[SIZE/2+1])/2;
+	else
+		median = arr[SIZE/2+1];
+	return median;
 }
 
 int find_maximum(unsigned char *arr) {
+	int max;
 
+	for (int i = 0; i < SIZE; i++) {
+		if (arr[i] > max)
+			max = arr[i];
+	}
+
+	return max;
 }
 
 int find_minimum(unsigned char *arr) {
+	int min;
+
+	for (int i = 0; i < SIZE; i++) {
+		if (min > arr[i])
+			min = arr[i];
+	}
 	
+	return min;
 }
 
-void sort_array(unsigned char arr) {
+void sort_array(unsigned char *arr, int low, int high) {
+	if (low < high){
+		int part = partition(arr, low, high);
 
+		sort_array(arr, low, part - 1);
+		sort_array(arr, part + 1, high);
+	}
+}
+
+//Quick sort algorithm
+int partition (unsigned char *arr, int low, int high) {
+	int i, j, pivot;
+
+	//printf("Parition of array\n");
+
+	pivot = arr[low];
+	i = low;
+	j = high;
+
+	while(i < j) {
+		while (arr[i] <= pivot && i <= high - 1) 
+			i++;
+		while (arr[j]  > pivot && j >= low + 1)
+			j--;
+		if (i < j)
+			swap(&arr[i], &arr[j]);
+
+	}
+	swap(&arr[low], &arr[j]);
+	return j;
+}
+
+void swap(unsigned char* a, unsigned char* b){
+	int temp = *a;
+	*a = *b;
+	*b = temp;
 }
