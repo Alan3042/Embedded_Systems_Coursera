@@ -79,16 +79,14 @@ int find_minimum(unsigned char *arr);
  *
  * @return Returns minimum of values in array.
  */
-void sort_array(unsigned char *arr, int low, int high); 
+void sort_array(unsigned char *arr, int n); 
 /**
  * @brief Array is sorted from largest to smallest
  *
- * <Add Extended Description Here>
+ * Selection sort algorithm is used to find the max value and set to the next value in the array starting from index 0. 
  *
  * @param arr - Given array with values.
  */
 
-int partition(unsigned char *arr, int low, int high);
 
-void swap (unsigned char* a, unsigned char* b);
 #endif /* __STATS_H__ */

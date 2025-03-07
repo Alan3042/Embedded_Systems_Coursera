@@ -40,13 +40,10 @@ void main() {
   int min = find_minimum(test);
   int mean = find_mean(test);
   int median = find_median(test);
-  sort_array(test, 0, (sizeof(test) / sizeof(test[0])) - 1);
+  sort_array(test, (sizeof(test) / sizeof(test[0])));
   /* Statistics and Printing Functions Go Here */
   print_statistics(max, min, mean, median);
-<<<<<<< HEAD:week1/stats.c
-=======
   print_array(test);
->>>>>>> dev_c1m1:stats.c
 }
 
 void print_statistics(int max, int min, int mean, int median) {
@@ -107,40 +104,18 @@ int find_minimum(unsigned char *arr) {
 	return min;
 }
 
-void sort_array(unsigned char *arr, int low, int high) {
-	if (low < high){
-		int part = partition(arr, low, high);
-
-		sort_array(arr, low, part - 1);
-		sort_array(arr, part + 1, high);
+//Selection sort
+void sort_array(unsigned char *arr, int n) {
+	for (int i = 0; i < n - 1; i++) {
+		int max = i;
+		for (int j = i + 1; j < n; j++)
+			if (arr[j] > arr[max])
+				max = j;
+		if (max != i) {
+			int temp = arr [max];
+			arr[max] = arr[i];
+			arr[i] = temp;
+		}
 	}
-}
-
-//Quick sort algorithm
-int partition (unsigned char *arr, int low, int high) {
-	int i, j, pivot;
-
-	//printf("Parition of array\n");
-
-	pivot = arr[low];
-	i = low;
-	j = high;
-
-	while(i < j) {
-		while (arr[i] <= pivot && i <= high - 1) 
-			i++;
-		while (arr[j]  > pivot && j >= low + 1)
-			j--;
-		if (i < j)
-			swap(&arr[i], &arr[j]);
-
-	}
-	swap(&arr[low], &arr[j]);
-	return j;
-}
-
-void swap(unsigned char* a, unsigned char* b){
-	int temp = *a;
-	*a = *b;
-	*b = temp;
+	       
 }
