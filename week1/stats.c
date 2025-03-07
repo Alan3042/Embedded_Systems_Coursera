@@ -41,10 +41,15 @@ void main() {
   int mean = find_mean(test);
   int median = find_median(test);
   /* Statistics and Printing Functions Go Here */
+  print_statistics(max, min, mean, median);
 }
 
 void print_statistics(int max, int min, int mean, int median) {
 
+	printf("Max: %d\n", max);
+	printf("Min: %d\n", min);
+	printf("Mean: %d\n", mean);
+	printf("Median: %d\n", median);
 }
 
 void print_array(unsigned char *arr) {
@@ -52,19 +57,47 @@ void print_array(unsigned char *arr) {
 }
 
 int find_mean(unsigned char *arr) {
+	int mean;
+
+	for (int i = 0; i < SIZE; i++) {
+		mean += arr[i];
+	}
+
+	mean = mean / SIZE;
 	
+	return mean;
 }
 
 int find_median(unsigned char *arr) {
-
+	int median;
+	
+	if (SIZE%2 == 0)
+		median = (arr[SIZE/2] + arr[SIZE/2+1])/2;
+	else
+		median = arr[SIZE/2+1];
+	return median;
 }
 
 int find_maximum(unsigned char *arr) {
+	int max;
 
+	for (int i = 0; i < SIZE; i++) {
+		if (arr[i] > max)
+			max = arr[i];
+	}
+
+	return max;
 }
 
 int find_minimum(unsigned char *arr) {
+	int min;
+
+	for (int i = 0; i < SIZE; i++) {
+		if (min > arr[i])
+			min = arr[i];
+	}
 	
+	return min;
 }
 
 void sort_array(unsigned char arr) {
